@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import "./searchBar.css";
 class SearchBar extends Component {
-  state = {
-    search: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: "",
+    };
+    this.searchImage = this.searchImage.bind(this);
+  }
 
   //inputa verilen değeri alma
   inputChanged(event) {
@@ -12,7 +16,7 @@ class SearchBar extends Component {
     });
   }
   searchImage() {
-    console.log("search image clicked");
+    this.props.onSearchImage(this.state.search);
   }
 
   render() {
@@ -21,7 +25,7 @@ class SearchBar extends Component {
         <input
           type="text"
           placeholder="Ara"
-          //value attribute tanımlama
+          //value attclearribute tanımlama
           value={this.state.search}
           onChange={this.inputChanged.bind(this)}
           onKeyPress={(e) => {
