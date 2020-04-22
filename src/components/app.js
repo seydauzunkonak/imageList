@@ -19,7 +19,7 @@ class App extends Component {
         Authorization: "Client-ID Qpy8g9pgEDsPUuK8TM_LdsCYkohQG0bxN5JWFxxlMlQ",
       },
     });
-    console.log(result.data.results);
+
     this.setState({
       images: result.data.results,
     });
@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <div className="app-container">
         <SearchBar onSearchImage={this.onSearchImage} />
-        <ImageList />
+        <ImageList images={this.state.images} />
       </div>
     );
   }
